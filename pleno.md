@@ -1,6 +1,6 @@
 # ![Logo da Empresa](https://lexxen.com/Group%201000001771.svg)
 
-# Desafio Prático - Desenvolvedor Laravel - 2
+# Desafio Prático - Desenvolvedor Laravel - Pleno
 
 Seja bem-vindo(a)! Esta prova foi criada para avaliar suas habilidades técnicas e seu conhecimento em boas práticas de desenvolvimento. Leia atentamente os requisitos abaixo e siga as instruções para entrega. Boa sorte!
 
