@@ -78,6 +78,11 @@ Você foi contratado para desenvolver uma API RestFull para gerenciar projetos e
 
 #### 2. Data de entrega
 - Deve ser publicado até 23:59 de segunda-feira ( 27/01/2024 )
+
+### 3. Email para entrega
+- Deve ser adicionados os seguintes emails ao repositório:
+  - paulo.neto@lexxen.com
+  - vitor.federle@lexxen.com
 ---
 
 ## Critérios de Avaliação
