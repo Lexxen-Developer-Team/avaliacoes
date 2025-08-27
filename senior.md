@@ -46,13 +46,19 @@ Seja bem-vindo(a)! Este desafio foi criado para avaliar não apenas sua capacida
 
 ---
 
-## 5. Testes Automatizados  
-Cobertura mínima:  
-- Fluxo completo de transferência bem-sucedida.  
-- Transferência com saldo insuficiente.  
-- Conta bloqueada.  
-- Reprocessamento (idempotência).  
-- Consulta de extrato com filtros.  
+## 5. Webhook
+Criar simulação de webhook:
+- Criar end-point para recepcionar uma transação.
+- Operação deve ser **idempotente**.
+- Disponiblizar disparo para testar.  
+
+## 5. Webhook – Simulação de Integração  
+Implementar a simulação de um **webhook de transações financeiras**:  
+- Criar um **endpoint REST** para recepção de uma transação externa.  
+- A operação deve ser **idempotente**. 
+- Registrar **logs completos** de entrada e resultado.  
+- Disponibilizar um mecanismo simples para **disparo de eventos de teste** (ex.: rota auxiliar, comando Artisan ou script) para validar o fluxo ponta a ponta.  
+- Garantir que a implementação seja **segura e escalável**, considerando boas práticas de autenticação, validação e concorrência.   
 
 Diferenciais:  
 - Testes de **integração** validando transações no banco.  
