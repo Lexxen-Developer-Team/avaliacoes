@@ -23,8 +23,8 @@ Seja bem-vindo(a)! Este desafio foi criado para avaliar não apenas sua capacida
 - Regras:  
   - Não pode transferir se a conta estiver bloqueada.  
   - Não pode transferir com saldo insuficiente.  
-  - Operação deve ser **transacional** e **idempotente** (não permitir duplicidade em caso de reprocessamento)(etapa 3).  
-- Implementar camada de **Orquestrador de Transações** (não direto no Controller).  
+  - Operação deve ser **transacional** e **idempotente** (não permitir duplicidade em caso de reprocessamento).  
+- Implementar camada de **Orquestrador de Transações** (não direto no Controller)(etapa 3).  
 - As transferências devem ter **logs detalhados** de auditoria (quem iniciou, valores antes/depois, status).  
 
 ---
