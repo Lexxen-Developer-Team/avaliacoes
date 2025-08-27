@@ -5,7 +5,7 @@ Seja bem-vindo(a)! Este desafio foi criado para avaliar não apenas sua capacida
 
 ---
 
-## 1. Usuários & Contas  
+### 1. Usuários & Contas  
 - Implementar **CRUD de usuários**.  
 - Cada usuário deve possuir **uma conta bancária vinculada**.  
 - Usuário inicia em `waiting_approval`.
@@ -16,9 +16,7 @@ Seja bem-vindo(a)! Este desafio foi criado para avaliar não apenas sua capacida
 - A conta deve ter atributos: `account`, `balance`, `status` (`ATIVA`, `BLOQUEADA`).  
 - Apenas usuários aprovados podem movimentar.  
 
----
-
-## 2. Transferências  
+### 2. Transferências  
 - Usuários podem transferir entre suas próprias contas ou para contas de outros usuários.  
 - Regras:  
   - Não pode transferir se a conta estiver bloqueada.  
@@ -27,9 +25,7 @@ Seja bem-vindo(a)! Este desafio foi criado para avaliar não apenas sua capacida
 - Implementar camada de **Orquestrador de Transações** (não direto no Controller)(etapa 3).  
 - As transferências devem ter **logs detalhados** de auditoria (quem iniciou, valores antes/depois, status).  
 
----
-
-## 3. Extrato (Observer & Eventos)  
+### 3. Extrato (Observer & Eventos)  
 - Criar um **Observer** ou **Domain Event** para `Transfer`, que registre automaticamente no extrato:  
   - Conta origem, conta destino, valor, data/hora, saldo após operação.  
 - O extrato deve poder ser consultado **com paginação e filtros**:  
@@ -37,16 +33,12 @@ Seja bem-vindo(a)! Este desafio foi criado para avaliar não apenas sua capacida
   - Por tipo (`entrada`/`saída`).  
 - O modelo de extrato deve estar otimizado para **grandes volumes de dados**.  
 
----
-
-## 4. Segurança & Boas Práticas  
+### 4. Segurança & Boas Práticas  
 - Autenticação com **Laravel Sanctum**.  
 - Todas as rotas devem exigir autenticação e autorização adequada (policy).  .  
 - Respostas padronizadas em JSON (`success`, `data`, `errors`).  
 
----
-
-## 5. Webhook – Simulação de Integração  
+### 5. Webhook – Simulação de Integração  
 Implementar a simulação de um **webhook de transações financeiras**:  
 - Criar um **endpoint REST** para recepção de uma transação externa.  
 - A operação deve ser **idempotente**. 
@@ -54,13 +46,7 @@ Implementar a simulação de um **webhook de transações financeiras**:
 - Disponibilizar um mecanismo simples para **disparo de eventos de teste** (ex.: rota auxiliar, comando Artisan ou script) para validar o fluxo ponta a ponta.  
 - Garantir que a implementação seja **segura e escalável**, considerando boas práticas de autenticação, validação e concorrência.   
 
-Diferenciais:  
-- Testes de **integração** validando transações no banco.  
-- Testes de **concorrência** simulando múltiplas transferências simultâneas.  
-
----
-
-## 6. Testes Automatizados
+### 6. Testes Automatizados
 Cobertura mínima:
 - Fluxo completo de transferência bem-sucedida.
 - Transferência com saldo insuficiente.
@@ -70,7 +56,7 @@ Cobertura mínima:
 
 ---
 
-## Requisitos Não Funcionais  
+### Requisitos Não Funcionais  
 - **Laravel 11 ou 12**, banco **Postgres**.  
 - Uso de **Migrations, Seeders, Factories**.  
 - **Docker** ou instruções de setup para rodar facilmente.  
@@ -78,4 +64,9 @@ Cobertura mínima:
 - README explicando:  
   - Setup do projeto.  
   - Fluxos principais.  
-  - Decisões arquiteturais.  
+  - Decisões arquiteturais.
+ 
+  
+### Diferenciais:  
+- Testes de **integração** validando transações no banco.  
+- Testes de **concorrência** simulando múltiplas transferências simultâneas.  
