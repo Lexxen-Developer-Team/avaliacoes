@@ -46,12 +46,6 @@ Seja bem-vindo(a)! Este desafio foi criado para avaliar não apenas sua capacida
 
 ---
 
-## 5. Webhook
-Criar simulação de webhook:
-- Criar end-point para recepcionar uma transação.
-- Operação deve ser **idempotente**.
-- Disponiblizar disparo para testar.  
-
 ## 5. Webhook – Simulação de Integração  
 Implementar a simulação de um **webhook de transações financeiras**:  
 - Criar um **endpoint REST** para recepção de uma transação externa.  
@@ -66,6 +60,16 @@ Diferenciais:
 
 ---
 
+## 6. Testes Automatizados
+Cobertura mínima:
+- Fluxo completo de transferência bem-sucedida.
+- Transferência com saldo insuficiente.
+- Conta bloqueada.
+- Reprocessamento (idempotência).
+- Consulta de extrato com filtros.
+
+---
+
 ## Requisitos Não Funcionais  
 - **Laravel 11 ou 12**, banco **Postgres**.  
 - Uso de **Migrations, Seeders, Factories**.  
@@ -75,10 +79,3 @@ Diferenciais:
   - Setup do projeto.  
   - Fluxos principais.  
   - Decisões arquiteturais.  
-
----
-
-## Entrega  
-- Enviar em **repositório privado no GitHub**.  
-- Conceder acesso à avaliação.  
-- README com instruções claras de execução.  
