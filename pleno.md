@@ -32,7 +32,8 @@ Seja bem-vindo(a)! Esta prova foi criada para avaliar suas habilidades técnicas
 ---
 
 ## Requisitos Não Funcionais
-- **Laravel 11**, banco **Postgres/MySQL/SQLite**.
+- Ser uma **API RestFull**.
+- **Laravel 11 ou 12** (api mode), banco **Postgres/MySQL/SQLite**.
 - **Sanctum** para autenticação.
 - **Migrations, Models, Seeders, Factories** organizados.
 - **Testes automatizados** cobrindo:
