@@ -56,8 +56,9 @@ Cobertura mínima:
 
 ---
 
-### Requisitos Não Funcionais  
-- **Laravel 11 ou 12**, banco **Postgres**.  
+### Requisitos Não Funcionais 
+- Ser uma **API RestFull**.
+- **Laravel 11 ou 12** (api mode), banco **Postgres**.  
 - Uso de **Migrations, Seeders, Factories**.  
 - **Docker** ou instruções de setup para rodar facilmente.  
 - Código organizado com **PSR-12** e boas práticas de DDD e SOLID.  
