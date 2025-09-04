@@ -2,25 +2,30 @@
 
 **Desafio Prático - Desenvolvedor Laravel Pleno**
 
-Seja bem-vindo(a)! Este desafio tem como objetivo avaliar suas habilidades técnicas em Laravel, boas práticas de desenvolvimento, pensamento assíncrono e otimização de banco de dados.  
-Leia atentamente os requisitos e entregue o melhor código possível. Boa sorte!
+✨ Seja muito bem-vindo(a)!
+Este desafio foi criado para conhecer suas habilidades com Laravel, boas práticas de desenvolvimento, pensamento assíncrono e otimização de banco de dados.
+
+Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua solução. Estamos ansiosos para ver o melhor do seu código. Boa sorte e divirta-se no processo! 🚀
 
 ---
 
 ## **1. Usuários**
 
-- CRUD de usuários.
+- CRUD de usuários, pessoa física e pessoa jurídica.
+- Separar pessoas físicas de jurídicas no banco.
 - Cada usuário possui uma ou mais contas bancárias.
 - O usuário deve iniciar em **“aguardando aprovação”**.
 - Criar um **Job/Command** para aprovar ou reprovar usuários em lote.
 - Usuários reprovados **não podem efetuar login**.
 - Implementar **validação de duplicidade de e-mail** com regra no banco (único) e tratamento adequado no código.
+- O usuário nunca pode ser excluída permanentemente. 
 
 ---
 
 ## **2. Contas**
 
-- Atributos: `número`, `saldo`, `status (ATIVA, BLOQUEADA)`.
+- Atributos: `número`, `status (ATIVA, BLOQUEADA)`.
+- O saldo da conta é a soma dos saldos das carteiras. 
 - Criar conta com saldo inicial = **0**.
 - Apenas usuários **aprovados e ativos** podem movimentar.
 - Implementar **otimização para evitar N+1 queries**:
@@ -28,11 +33,24 @@ Leia atentamente os requisitos e entregue o melhor código possível. Boa sorte!
 
 ---
 
-## **3. Transferências**
+## **3. Carteiras**
+- Atributos: `name`, `balance`, `type (DEFAULT, WALLET)`, `status (ATIVA, DESATIVA)`.
+- Deve conter *polimorfismo (morth)* para usuários PJ e PF.
+- Uma carteira desativada não pode receber dinheiro.
+- Para desabilidar uma carteira, deve-se remover todo saldo antes. 
+- A carteira nunca pode ser excluída permanentemente.
+- A carteira do tipo `DEFAULT` deve ser criado na aprovação do usuário.
+- O usuário não pode criar carteiras do tipo `DEFAULT`. 
 
-- Usuários podem transferir dinheiro entre suas próprias contas ou para contas de outros usuários.
+---
+
+## **4. Transferências**
+
+- Usuários podem transferir dinheiro entre suas próprias carteiras e para contas de outros usuários.
 - **Regras**:
+  - Ao enviar para uma conta de terceiros, deve-se por o saldo na carteira `DEFAULT` do recebedor.   
   - Conta bloqueada não pode transferir.
+  - Carteiras desabilitadas não podem transferir ou receber.
   - Saldo insuficiente → deve lançar exceção de negócio.
   - Operação deve ser **transacional** (não permitir saldo negativo em concorrência).
   - Implementar **Job assíncrono** para processar transferências (simular fila de processamento).
@@ -40,17 +58,18 @@ Leia atentamente os requisitos e entregue o melhor código possível. Boa sorte!
 
 ---
 
-## **4. Extrato**
+## **5. Extrato**
 
 - Criar um **Observer** para `Transfer`.
 - Após cada transferência concluída, registrar no **Extrato**:
   - Conta origem, conta destino, valor, data/hora, saldo após operação.
 - Extrato deve ser paginado e filtrável por período (`start_date`, `end_date`).
 - Deve suportar busca de extratos por usuário **sem gerar consultas duplicadas** (exemplo: eager loading).
-
+- O extrato é vinculado a uma carteira.
+  
 ---
 
-## **5. Requisitos Não Funcionais**
+## **6. Requisitos Não Funcionais**
 
 - API RestFull.
 - Laravel 11 ou 12 (modo API).
@@ -59,15 +78,21 @@ Leia atentamente os requisitos e entregue o melhor código possível. Boa sorte!
 - Estrutura limpa com `Migrations`, `Models`, `Seeders`, `Factories`.
 - Usar **cache** em pelo menos uma consulta crítica (exemplo: saldo ou extrato agregado).
 - Evitar SQL redundante em consultas de alto volume (demonstre uso de `withCount`, `join`, ou cache).
+- Deve-se utilizar DTOs no recebimento da requests.
+- Deve-se utilizar Resources nas devoluções da API.
+- O controller não pode resolver RN, apenas manipulações no Eloquent (query/paginacões).
+- Deve-se utilizar Gate para poder garantir segurança. 
 
 ---
 
-## **6. Testes Automatizados**
+## **7. Testes Automatizados**
 
 Cobrir pelo menos:
 
 - Aprovação de usuário (Job funcionando).
-- Transferência com sucesso.
+- Transferência realizada com sucesso:
+  -	Entre carteiras do mesmo usuário.
+	-	Da carteira do usuário para uma conta de outro usuário.
 - Saldo insuficiente.
 - Conta bloqueada.
 - Transferência duplicada não deve ser processada duas vezes.
