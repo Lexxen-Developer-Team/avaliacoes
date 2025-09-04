@@ -85,9 +85,12 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
 
 ---
 
-## **7. Requisitos Não Funcionais**
+## **7. Arquitetura**
 
-## Componentes
+Deve-se utilizar **Docker** para resolver o modelo de arquitetura:
+
+#### Componentes
+
 - **NGINX (balanceador):** distribui requisições entre os pods do app.
 - **Laravel App Pods (APP1…APPN):** instâncias idênticas e stateless.
 - **Redis Cluster:** cache, sessões e locks distribuídos.
@@ -95,7 +98,8 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
 - **Service MSEX:** serviço especializado que grava dados no MongoDB.
 - **MongoDB:** armazenamento de documentos/eventos.
 
-## Fluxos
+#### Fluxos
+
 - **Síncrono (HTTP):**
   - Cliente → NGINX → APP
   - APP → Redis / Postgres
@@ -103,7 +107,8 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
 - **Assíncrono (Fila):**
   - APP → Message Broker (do Laravel) → Postgres
 
-## Diagrama
+#### Diagrama
+
 - Disponível em `/assets/arquitetura-senior.php`
 
 ---
