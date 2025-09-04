@@ -18,14 +18,14 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
 - Criar um **Job/Command** para aprovar ou reprovar usuários em lote.
 - Usuários reprovados **não podem efetuar login**.
 - Implementar **validação de duplicidade de e-mail** com regra no banco (único) e tratamento adequado no código.
-- O usuário nunca pode ser excluída permanentemente. 
+- O usuário nunca pode ser excluída permanentemente.
 
 ---
 
 ## **2. Contas**
 
 - Atributos: `número`, `status (ATIVA, BLOQUEADA)`.
-- O saldo da conta é a soma dos saldos das carteiras. 
+- O saldo da conta é a soma dos saldos das carteiras.
 - Criar conta com saldo inicial = **0**.
 - Apenas usuários **aprovados e ativos** podem movimentar.
 - Implementar **otimização para evitar N+1 queries**:
@@ -37,10 +37,10 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
 - Atributos: `name`, `balance`, `type (DEFAULT, WALLET)`, `status (ATIVA, DESATIVA)`.
 - Deve conter *polimorfismo (morth)* para usuários PJ e PF.
 - Uma carteira desativada não pode receber dinheiro.
-- Para desabilidar uma carteira, deve-se remover todo saldo antes. 
+- Para desabilidar uma carteira, deve-se remover todo saldo antes.
 - A carteira nunca pode ser excluída permanentemente.
 - A carteira do tipo `DEFAULT` deve ser criado na aprovação do usuário.
-- O usuário não pode criar carteiras do tipo `DEFAULT`. 
+- O usuário não pode criar carteiras do tipo `DEFAULT`.
 
 ---
 
@@ -48,7 +48,7 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
 
 - Usuários podem transferir dinheiro entre suas próprias carteiras e para contas de outros usuários.
 - **Regras**:
-  - Ao enviar para uma conta de terceiros, deve-se por o saldo na carteira `DEFAULT` do recebedor.   
+  - Ao enviar para uma conta de terceiros, deve-se por o saldo na carteira `DEFAULT` do recebedor.
   - Conta bloqueada não pode transferir.
   - Carteiras desabilitadas não podem transferir ou receber.
   - Saldo insuficiente → deve lançar exceção de negócio.
@@ -66,7 +66,7 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
 - Extrato deve ser paginado e filtrável por período (`start_date`, `end_date`).
 - Deve suportar busca de extratos por usuário **sem gerar consultas duplicadas** (exemplo: eager loading).
 - O extrato é vinculado a uma carteira.
-  
+
 ---
 
 ## **6. Requisitos Não Funcionais**
@@ -104,6 +104,7 @@ Leia os requisitos com atenção e sinta-se à vontade para caprichar na sua sol
   - APP → Message Broker (do Laravel) → Postgres
 
 ## Diagrama
+- Disponível em `/assets/arquitetura-senior.php`
 
 ---
 
