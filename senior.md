@@ -110,7 +110,6 @@ Deve-se utilizar **Docker** para resolver o modelo de arquitetura:
 #### Diagrama
 
 ![](/assets/arquitetura-senior.png)
-- Disponível em `/assets/arquitetura-senior.php`
 
 ---
 
